@@ -1,4 +1,8 @@
 {
   "name": "Flo by Moen",
-  "render_readme": true
+  "type": "integration",
+  "iot_class": "cloud_polling",
+  "render_readme": true,
+  "documentation": "https://github.com/shanelord01/hass-firewalla-ng",
+  "homeassistant": "2024.4.0"
 }
