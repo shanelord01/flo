@@ -5,7 +5,7 @@
 [![Type](https://img.shields.io/badge/Type-Custom_Component-forestgreen.svg)](https://github.com/shanelord01/hass-flo)   [![HA](https://img.shields.io/badge/Home_Assistant-2024.4+-forestgreen.svg)](https://www.home-assistant.io)   [![ProjectStage](https://img.shields.io/badge/Project_Stage-Pre--Release-red.svg)](https://github.com/shanelord01/hass-flo)
 
 Monitor and control your Flo by Moen smart water devices from Home Assistant.
-An updated drop-in replacement for the core Flo integration, fixing a long-standing temperature unit bug and other code quality issues. Compatible with Flo Smart Water Shutoff valves and Flo Smart Water Detectors (pucks).
+An updated drop-in replacement for the core Flo integration, fixing code quality issues. Compatible with Flo Smart Water Shutoff valves and Flo Smart Water Detectors (pucks).
 
 > **Replaces the built-in integration** — because `custom_components/` takes precedence over core,
 > this installs over the default Flo integration with no migration, no entity ID changes, and no
@@ -17,18 +17,10 @@ An updated drop-in replacement for the core Flo integration, fixing a long-stand
 
 | Issue | Core | This Integration |
 |---|---|---|
-| Temperature sensor reports ~99°F instead of ~52°F | ❌ Bug | ✅ Fixed |
 | Water detector uses wrong binary sensor device class | ❌ `PROBLEM` | ✅ `MOISTURE` |
 | Duplicate logger defined alongside shared logger | ❌ Present | ✅ Removed |
 | Failure count shared across all device instances | ❌ Class-level | ✅ Per-instance |
 | Orphaned config strings for non-existent `host` field | ❌ Present | ✅ Removed |
-
-### Temperature Bug Detail
-
-The Flo API field `tempF` returns values in **Celsius** despite its name — a Moen API change
-that was never corrected in the core integration. This caused reported temperatures of
-~99°F when the actual value was ~9.9°C (~49.8°F). Home Assistant handles the Celsius→Fahrenheit
-conversion automatically once the native unit is declared correctly.
 
 ---
 
